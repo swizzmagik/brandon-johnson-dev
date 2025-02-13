@@ -1,14 +1,13 @@
-import { Container } from "@/components/Container";
-import { Hero } from "@/components/Hero";
-import { Projects } from "@/components/Projects";
-import { getUserRepositories } from "@/lib/github";
-import { LatestRepos } from "@/components/LatestRepos";
-import { Repository } from "@/types/repos";
-import { Experience } from "@/components/Experience";
-import { generateRssFeed } from "@/lib/generateRSSFeed";
-import { getAllBlogs } from "@/lib/getAllBlogs";
 import AllBlogs from "@/components/AllBlogs";
+import { Container } from "@/components/Container";
+import { Experience } from "@/components/Experience";
+import { Hero } from "@/components/Hero";
+import { LatestRepos } from "@/components/LatestRepos";
+import { Projects } from "@/components/Projects";
 import { Uses } from "@/components/Uses";
+import { getAllBlogs } from "@/lib/getAllBlogs";
+import { getUserRepositories } from "@/lib/github";
+import { Repository } from "@/types/repos";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -56,7 +55,7 @@ export async function getStaticProps() {
 
   // FIXME: Add back the rss feed generation
 
-  const data = await getUserRepositories("manuarora700");
+  const data = await getUserRepositories("swizzmagik");
 
   return {
     props: {

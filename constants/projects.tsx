@@ -2,44 +2,39 @@ import { stack } from "./stack";
 
 export const projects = [
   {
-    title: "Algochurn",
+    title: "Cursor IDE",
     description:
-      "A web app that allows users to practice for front-end and UI interviews.",
-    image: "/images/projects/algochurn.png",
-    stack: [stack.nextjs, stack.tailwindcss, stack.typescript, stack.react],
-    link: "https://algochurn.com",
+      "Leading development of Cursor's AI-powered code editor. Building features for code generation, refactoring, and real-time collaboration using LLMs.",
+    image: "/images/projects/cursor.png",
+    stack: [stack.typescript, stack.react, stack.electron, stack.python],
+    link: "https://cursor.sh",
+    featured: true,
   },
   {
-    title: "Aceternity",
+    title: "Einstein Analytics",
     description:
-      "A web design and development agency that gets the job done. Somehow.",
-    image: "/images/projects/aceternity.png",
-    stack: [stack.nextjs, stack.tailwindcss, stack.typescript, stack.react],
-    link: "https://aceternity.com",
-  },
-
-  {
-    title: "Tailwind Master Kit",
-    description:
-      "Buy premium tailwind components and templates for your next project.",
-    image: "/images/projects/tailwindmasterkit.png",
-    stack: [stack.nextjs, stack.tailwindcss, stack.typescript, stack.react],
-    link: "https://tailwindmasterkit.com",
+      "Led development of key features for Salesforce's Einstein Analytics platform, focusing on data visualization and analytics tools.",
+    image: "/images/projects/einstein.png",
+    stack: [stack.typescript, stack.react, stack.d3, stack.graphql],
+    link: "https://www.salesforce.com/products/einstein-analytics/overview/",
+    featured: true,
   },
   {
-    title: "Box Shadows",
+    title: "Supply Chain Management Tools",
     description:
-      "Copy and paste beautiful box shadows that stand out for your next project.",
-    image: "/images/projects/boxshadows.png",
-    stack: [stack.nextjs, stack.tailwindcss, stack.typescript, stack.react],
-    link: "https://manuarora.in/boxshadows",
+      "Built internal tools at Apple for supply chain management and optimization, improving operational efficiency.",
+    image: "/images/projects/supply-chain.png",
+    stack: [stack.react, stack.nodejs, stack.postgresql, stack.aws],
+    link: null,
+    featured: true,
   },
   {
-    title: "PlaceholderTech",
+    title: "Personal Portfolio",
     description:
-      "Your one-stop shop for web app needs tailored to your requirements.",
-    image: "/images/projects/placeholdertech.png",
-    stack: [stack.nextjs, stack.tailwindcss, stack.typescript, stack.react],
-    link: "https://placeholdertech.in",
+      "Modern portfolio site built with Next.js 13, React, and TailwindCSS. Features dark mode, responsive design, and dynamic content management.",
+    image: "/images/projects/portfolio.png",
+    stack: [stack.nextjs, stack.react, stack.typescript, stack.tailwindcss],
+    link: "https://brandonjohnson.dev",
+    featured: false,
   },
 ];

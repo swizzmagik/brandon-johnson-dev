@@ -1,5 +1,4 @@
 import { Container } from "@/components/Container";
-import { Projects } from "@/components/Projects";
 import { Timeline } from "@/components/Timeline";
 import { user } from "@/constants/user";
 import Image from "next/image";
@@ -39,21 +38,22 @@ export default function ProjectsPage() {
         <div>
           <h1 className="font-bold text-3xl md:text-5xl md:leading-tight text-zinc-50 max-w-3xl">
             Hey! I'm
-            <span className="text-cyan-500"> Tyler Durden</span> and I'm a full
-            stack soap engineer.
+            <span className="text-cyan-500"> Brandon Johnson</span> and I'm a
+            Senior Software Engineer.
           </h1>
           <p className="text-zinc-400 text-sm md:text-base max-w-2xl mt-8 md:leading-loose tracking-wide">
-            I've been obsessed with technology ever since I was a kid. When I
-            wasn't taking apart my family's computer (sorry, mom), I was
-            teaching myself how to code. Fast forward a few years, and now I'm a
-            full-fledged code ninja with an insatiable thirst for creating
-            beautiful websites and functional applications.
+            I'm a Senior Software Engineer with expertise in AI/ML, full-stack
+            development, and cloud architecture. Currently at Cursor, I'm
+            leading the development of AI-powered features that are transforming
+            how developers write code. With experience at companies like Apple
+            and Salesforce, I bring a deep understanding of building scalable,
+            enterprise-level applications.
           </p>
         </div>
 
         <div className="order-first md:order-last">
           <Image
-            src={`/images/avatar.png`}
+            src={`/images/avatar.jpg`}
             width={200}
             height={200}
             alt="Avatar"
@@ -78,11 +78,13 @@ export default function ProjectsPage() {
 
       <div className="max-w-5xl mx-auto px-8 mt-10 relative">
         <p className="text-zinc-400 text-sm md:text-base mt-8 md:leading-loose tracking-wide">
-          When I'm not busy slaying bugs and writing code, I'm usually busy
-          indulging in my two favorite hobbies: hot sauce and dad jokes. I
-          firmly believe that a good laugh and a dash of hot sauce can fix just
-          about anything, including bugs in my code (okay, maybe not that last
-          part).
+          When I'm not coding, I'm deeply involved in the AI/ML community,
+          exploring emerging technologies, and pushing the boundaries of what's
+          possible with AI-assisted development. I'm passionate about creating
+          tools that enhance developer productivity and make complex
+          technologies more accessible. I regularly contribute to open-source
+          projects and share my insights about AI, software architecture, and
+          development best practices.
         </p>
         <p className="text-zinc-400 text-sm md:text-base mt-8 md:leading-loose tracking-wide">
           Here's a timeline of what I've been upto

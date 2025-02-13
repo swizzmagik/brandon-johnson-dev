@@ -1,12 +1,8 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import { Container } from "@/components/Container";
-import { Hero } from "@/components/Hero";
-import { Projects } from "@/components/Projects";
-import { getUserRepositories } from "@/lib/github";
 import { LatestRepos } from "@/components/LatestRepos";
-import { Repository } from "@/types/repos";
 import { user } from "@/constants/user";
+import { getUserRepositories } from "@/lib/github";
+import { Repository } from "@/types/repos";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -45,7 +41,7 @@ export async function getStaticProps() {
   // const res = await fetch("https://api.github.com/users/tylerdurden");
   // const data = await res.json();
 
-  const data = await getUserRepositories("manuarora700");
+  const data = await getUserRepositories("swizzmagik");
 
   return {
     props: {

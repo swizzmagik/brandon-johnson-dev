@@ -1,7 +1,6 @@
 import clsx from "clsx";
 
 import Link from "next/link";
-import React from "react";
 import { twMerge } from "tailwind-merge";
 import { BlurImage } from "./BlurImage";
 
@@ -23,11 +22,11 @@ export const Logo = ({
       <BlurImage
         width={30}
         height={30}
-        src={`/images/avatar.png`}
+        src={`/images/avatar.jpg`}
         className="rounded-full"
       />
       <span className={twMerge("font-inter font-bold", textClassName)}>
-        Tyler Durden
+        J. Brandon Johnson
       </span>
     </Link>
   );
