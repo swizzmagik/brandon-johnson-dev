@@ -1,50 +1,38 @@
+import { navItems, socialLinks } from "@/lib/navigation";
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandX,
+} from "@tabler/icons-react";
 import Link from "next/link";
-import React from "react";
 import { Logo } from "./Logo";
 
 export const Footer = () => {
-  const links = [
-    {
-      name: "Pricing",
-      href: "/pricing",
-    },
-    {
-      name: "Blog",
-      href: "/blog",
-    },
-    {
-      name: "Contact",
-      href: "/contact",
-    },
-  ];
-  const legal = [
-    {
-      name: "Privacy Policy",
-      href: "#",
-    },
-    {
-      name: "Terms of Service",
-      href: "#",
-    },
-    {
-      name: "Refund Policy",
-      href: "#",
-    },
-  ];
+  const legal: { name: string; href: string }[] = [];
   const socials = [
     {
-      name: "Twitter",
-      href: "https://twitter.com/mannupaaji",
+      title: "twitter",
+      href: "https://twitter.com/swizzmagik",
+      icon: (
+        <IconBrandX className="h-5 w-5 text-muted dark:text-muted-dark hover:text-black" />
+      ),
     },
     {
-      name: "LinkedIn",
-      href: "https://linkedin.com/in/manuarora28",
+      title: "github",
+      href: "https://github.com/swizzmagik",
+      icon: (
+        <IconBrandGithub className="h-5 w-5 text-muted dark:text-muted-dark hover:text-black" />
+      ),
     },
     {
-      name: "GitHub",
-      href: "https://github.com/manuarora700",
+      title: "linkedin",
+      href: "https://linkedin.com/in/swizzmagik",
+      icon: (
+        <IconBrandLinkedin className="h-5 w-5 text-muted dark:text-muted-dark hover:text-black" />
+      ),
     },
   ];
+
   return (
     <div className="relative">
       <div className="border-t border-neutral-100  dark:border-neutral-800 px-8 pt-20 pb-32 relative bg-white dark:bg-black">
@@ -53,18 +41,18 @@ export const Footer = () => {
             <div className="mr-4  md:flex mb-4">
               <Logo />
             </div>
-            <div>Copyright &copy; 2024 Every Labs</div>
-            <div className="mt-2">All rights reserved</div>
+            <div>Copyright &copy; 2024 J. Brandon Johnson</div>
+            <div className="mt-2">All rights reserved.</div>
           </div>
           <div className="grid grid-cols-3 gap-10 items-start mt-10 md:mt-0">
             <div className="flex justify-center space-y-4 flex-col mt-4">
-              {links.map((link) => (
+              {navItems.map((link) => (
                 <Link
-                  key={link.name}
+                  key={link.title}
                   className="transition-colors hover:text-black text-muted dark:text-muted-dark dark:hover:text-neutral-400 text-xs sm:text-sm"
-                  href={link.href}
+                  href={link.link}
                 >
-                  {link.name}
+                  {link.title}
                 </Link>
               ))}
             </div>
@@ -80,7 +68,7 @@ export const Footer = () => {
               ))}
             </div>
             <div className="flex justify-center space-y-4 flex-col mt-4">
-              {socials.map((link) => (
+              {socialLinks.map((link) => (
                 <Link
                   key={link.name}
                   className="transition-colors hover:text-black text-muted dark:text-muted-dark dark:hover:text-neutral-400 text-xs sm:text-sm"
@@ -94,7 +82,7 @@ export const Footer = () => {
         </div>
       </div>
       <p className="text-center text-5xl md:text-9xl lg:text-[18rem] font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 dark:from-neutral-950 to-neutral-200 dark:to-neutral-800 inset-x-0">
-        EVERY AI
+        BRANDON
       </p>
     </div>
   );

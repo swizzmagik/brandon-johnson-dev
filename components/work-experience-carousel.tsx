@@ -30,37 +30,15 @@ const ExperienceContent = ({ experience }: { experience: any }) => {
 export const WorkExperienceCarousel = () => {
   const experiences = [
     {
-      period: "2007-2013",
-      role: "Software Engineering Lead",
-      company: "Sierra Lobo",
+      period: "2022-2025",
+      role: "Senior Software Engineer",
+      company: "Synctera",
       description:
-        "Lead team of developers and network engineers through years of complex aerospace engineering projects",
-      link: "https://sierralobo.com/",
-      category: "Leadership",
-      title: "Aerospace Software Engineering",
-      src: "https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=2070&auto=format&fit=crop",
-    },
-    {
-      period: "2014-2017",
-      role: "Senior Full Stack Developer",
-      company: "SwizzMagik",
-      description:
-        "Founded a software engineering organization with a focus on website development and integration solutions",
-      link: "https://swizzmagik.com/",
-      category: "Entrepreneurship",
-      title: "Full Stack Development",
-      src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
-    },
-    {
-      period: "2016-2021",
-      role: "Solutions Architect",
-      company: "Excelsior Creative",
-      description:
-        "Co-founded a creative web development agency to build custom web solutions for small to mid-size businesses",
-      link: "https://excelsiorcreative.com/",
-      category: "Architecture",
-      title: "Web Solutions",
-      src: "/images/excelsior.jpg",
+        "Built and maintained fintech infrastructure enabling companies to quickly launch banking products and services",
+      link: "https://synctera.com/",
+      category: "Fintech",
+      title: "Banking Infrastructure",
+      src: "/images/synctera.jpg",
     },
     {
       period: "2018-2021",
@@ -74,15 +52,37 @@ export const WorkExperienceCarousel = () => {
       src: "/images/ocers.jpg",
     },
     {
-      period: "2022-2025",
-      role: "Senior Software Engineer",
-      company: "Synctera",
+      period: "2016-2021",
+      role: "Solutions Architect",
+      company: "Excelsior Creative",
       description:
-        "Built and maintained fintech infrastructure enabling companies to quickly launch banking products and services",
-      link: "https://synctera.com/",
-      category: "Fintech",
-      title: "Banking Infrastructure",
-      src: "/images/synctera.jpg",
+        "Co-founded a creative web development agency to build custom web solutions for small to mid-size businesses",
+      link: "https://excelsiorcreative.com/",
+      category: "Architecture",
+      title: "Web Solutions",
+      src: "/images/excelsior.jpg",
+    },
+    {
+      period: "2014-2017",
+      role: "Senior Full Stack Developer",
+      company: "SwizzMagik",
+      description:
+        "Founded a software engineering organization with a focus on website development and integration solutions",
+      link: "https://swizzmagik.com/",
+      category: "Entrepreneurship",
+      title: "Full Stack Development",
+      src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
+    },
+    {
+      period: "2007-2013",
+      role: "Software Engineering Lead",
+      company: "Sierra Lobo",
+      description:
+        "Lead team of developers and network engineers through years of complex aerospace engineering projects",
+      link: "https://sierralobo.com/",
+      category: "Leadership",
+      title: "Aerospace Software Engineering",
+      src: "https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=2070&auto=format&fit=crop",
     },
   ];
 

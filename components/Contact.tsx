@@ -1,6 +1,8 @@
 "use client";
 
+import { sendEmail } from "@/app/actions/send-email";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -12,17 +14,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandX,
 } from "@tabler/icons-react";
-import Password from "./password";
+import Link from "next/link";
 import { Button } from "./button";
-import { Logo } from "./Logo";
 
 const formSchema = z.object({
   name: z
@@ -51,6 +49,7 @@ const formSchema = z.object({
 export type LoginUser = z.infer<typeof formSchema>;
 
 export function ContactForm() {
+  const [isSuccess, setIsSuccess] = useState(false);
   const form = useForm<LoginUser>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -63,33 +62,64 @@ export function ContactForm() {
 
   async function onSubmit(values: LoginUser) {
     try {
-      console.log("submitted form", values);
-    } catch (e) {}
-  }
+      const result = await sendEmail(values);
 
+      if (result.success) {
+        setIsSuccess(true);
+        form.reset();
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (e) {
+      console.error("Error sending email:", e);
+      alert("Failed to send message. Please try again.");
+    }
+  }
   const socials = [
     {
       title: "twitter",
-      href: "https://twitter.com/mannupaaji",
+      href: "https://twitter.com/swizzmagik",
       icon: (
         <IconBrandX className="h-5 w-5 text-muted dark:text-muted-dark hover:text-black" />
       ),
     },
     {
       title: "github",
-      href: "https://github.com/manuarora700",
+      href: "https://github.com/swizzmagik",
       icon: (
         <IconBrandGithub className="h-5 w-5 text-muted dark:text-muted-dark hover:text-black" />
       ),
     },
     {
       title: "linkedin",
-      href: "https://linkedin.com/manuarora28",
+      href: "https://linkedin.com/in/swizzmagik",
       icon: (
         <IconBrandLinkedin className="h-5 w-5 text-muted dark:text-muted-dark hover:text-black" />
       ),
     },
   ];
+
+  if (isSuccess) {
+    return (
+      <div className="flex relative z-20 items-center w-full justify-center px-4 py-4 lg:py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div className="mx-auto w-full max-w-md text-center">
+          <h2 className="text-2xl font-bold text-black dark:text-white mb-4">
+            ✉️ Message Sent!
+          </h2>
+          <p className="text-muted dark:text-muted-dark text-sm">
+            Thanks for reaching out! We'll get back to you as soon as possible.
+          </p>
+          <div className="flex items-center justify-center space-x-4 py-4 mt-4">
+            {socials.map((social) => (
+              <Link href={social.href} key={social.title}>
+                {social.icon}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Form {...form}>
@@ -97,10 +127,10 @@ export function ContactForm() {
         <div className="mx-auto w-full max-w-md">
           <div>
             <h1 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-black dark:text-white">
-              Contact Us
+              Contact Me
             </h1>
             <p className="mt-4 text-muted dark:text-muted-dark  text-sm max-w-sm">
-              Please reach out to us and we will get back to you at the speed of
+              Please reach out to me and I will get back to you at the speed of
               light.
             </p>
           </div>
@@ -127,13 +157,13 @@ export function ContactForm() {
                           <input
                             id="name"
                             type="name"
-                            placeholder="Manu Arora"
-                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            placeholder="Enter your full name..."
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-forgeai text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
                             {...field}
                           />
                         </div>
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-500 text-xs" />
                     </FormItem>
                   )}
                 />
@@ -153,13 +183,13 @@ export function ContactForm() {
                           <input
                             id="email"
                             type="email"
-                            placeholder="hello@johndoe.com"
-                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            placeholder="Enter your email address..."
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-forgeai text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
                             {...field}
                           />
                         </div>
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-500 text-xs" />
                     </FormItem>
                   )}
                 />
@@ -179,13 +209,13 @@ export function ContactForm() {
                           <input
                             id="company"
                             type="company"
-                            placeholder="Aceternity Labs, LLC"
-                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            placeholder="Enter your company name..."
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-forgeai text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
                             {...field}
                           />
                         </div>
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-500 text-xs" />
                     </FormItem>
                   )}
                 />
@@ -198,24 +228,23 @@ export function ContactForm() {
                         htmlFor="message"
                         className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
                       >
-                        message
+                        Message
                       </label>
                       <FormControl>
                         <div className="mt-2">
                           <textarea
                             rows={5}
                             id="message"
-                            placeholder="Enter your message here"
-                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            placeholder="Enter your message here..."
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-forgeai text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
                             {...field}
                           />
                         </div>
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-500 text-xs" />
                     </FormItem>
                   )}
                 />
-
                 <div>
                   <Button className="w-full">Submit</Button>
                 </div>

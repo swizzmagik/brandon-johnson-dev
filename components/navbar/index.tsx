@@ -1,30 +1,8 @@
 "use client";
+import { navItems } from "@/lib/navigation";
 import { motion } from "framer-motion";
 import { DesktopNavbar } from "./desktop-navbar";
 import { MobileNavbar } from "./mobile-navbar";
-
-const navItems = [
-  {
-    title: "Skills",
-    link: "/skills",
-  },
-  {
-    title: "Experience",
-    link: "/experience",
-  },
-  {
-    title: "Projects",
-    link: "/projects",
-  },
-  {
-    title: "AI Agents",
-    link: "/ai-agents",
-  },
-  {
-    title: "Testimonials",
-    link: "/testimonials",
-  },
-];
 
 export function NavBar() {
   return (

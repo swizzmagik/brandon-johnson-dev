@@ -1,9 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Link } from "next-view-transitions";
-import { ReactNode } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ReactNode } from "react";
 
 type Props = {
   href: string;
@@ -32,6 +32,7 @@ export function NavBarItem({
         className
       )}
       target={target}
+      scroll={href.startsWith("#") ? false : true}
     >
       {children}
     </Link>

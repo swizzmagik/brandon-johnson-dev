@@ -9,8 +9,15 @@ export const metadata: Metadata = {
   title: "Brandon Johnson",
   description:
     "Brandon Johnson is a software engineer with a passion for building products that help people.",
+  icons: {
+    icon: [
+      { url: "/images/avatar.jpg", sizes: "32x32" },
+      { url: "/images/avatar.jpg", sizes: "16x16" },
+    ],
+    apple: { url: "/images/avatar.jpg", sizes: "180x180" },
+  },
   openGraph: {
-    images: ["/avatar.png"],
+    images: ["/images/avatar.jpg"],
   },
 };
 
