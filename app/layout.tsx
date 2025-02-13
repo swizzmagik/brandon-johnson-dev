@@ -10,11 +10,9 @@ export const metadata: Metadata = {
   description:
     "Brandon Johnson is a software engineer with a passion for building products that help people.",
   icons: {
-    icon: [
-      { url: "/images/avatar.jpg", sizes: "32x32" },
-      { url: "/images/avatar.jpg", sizes: "16x16" },
-    ],
-    apple: { url: "/images/avatar.jpg", sizes: "180x180" },
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+    shortcut: "/favicon.ico",
   },
   openGraph: {
     images: ["/images/avatar.jpg"],
