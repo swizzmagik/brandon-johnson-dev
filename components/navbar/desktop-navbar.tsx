@@ -9,7 +9,7 @@ import {
 import { Link } from "next-view-transitions";
 import { useState } from "react";
 import { Button } from "../button";
-import { Logo } from "../logo";
+import { Logo } from "../logo-old";
 import { NavBarItem } from "./navbar-item";
 
 type Props = {

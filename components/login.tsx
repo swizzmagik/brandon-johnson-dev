@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 import { IconBrandGithub } from "@tabler/icons-react";
 import Link from "next/link";
 import { Button } from "./button";
-import { Logo } from "./logo";
+import { Logo } from "./logo-old";
 import Password from "./password";
 
 const formSchema = z.object({

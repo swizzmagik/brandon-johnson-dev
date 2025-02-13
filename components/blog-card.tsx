@@ -3,7 +3,7 @@ import { Link } from "next-view-transitions";
 import Image from "next/image";
 import Balancer from "react-wrap-balancer";
 import { BlurImage } from "./blur-image";
-import { Logo } from "./logo";
+import { Logo } from "./logo-old";
 
 export const BlogCard = ({ blog }: { blog: BlogWithSlug }) => {
   const truncate = (text: string, length: number) => {
