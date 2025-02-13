@@ -5,7 +5,7 @@ import {
   IconBrandX,
 } from "@tabler/icons-react";
 import Link from "next/link";
-import { Logo } from "./logo-old";
+import { Logo } from "./logo";
 
 export const Footer = () => {
   const legal: { name: string; href: string }[] = [];

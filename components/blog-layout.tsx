@@ -6,7 +6,7 @@ import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "./container";
-import { Logo } from "./logo-old";
+import { Logo } from "./logo";
 export function BlogLayout({
   blog,
   children,
