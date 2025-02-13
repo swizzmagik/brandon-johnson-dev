@@ -8,6 +8,7 @@ import { Hero } from "@/components/hero";
 import { ProjectsGrid } from "@/components/projects-grid";
 import { Testimonials } from "@/components/testimonials";
 import { WorkExperienceCarousel } from "@/components/work-experience-carousel";
+// test
 
 export default function Home() {
   return (
