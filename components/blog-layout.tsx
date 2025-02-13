@@ -1,13 +1,12 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { BlogWithSlug } from "@/lib/blog";
 import { IconArrowLeft } from "@tabler/icons-react";
-import { Container } from "./container";
-import Image from "next/image";
-import { Logo } from "./Logo";
-import Link from "next/link";
 import { format } from "date-fns";
+import Image from "next/image";
+import Link from "next/link";
+import { Container } from "./container";
+import { Logo } from "./logo";
 export function BlogLayout({
   blog,
   children,

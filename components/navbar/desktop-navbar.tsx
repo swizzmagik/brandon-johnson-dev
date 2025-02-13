@@ -8,8 +8,8 @@ import {
 } from "framer-motion";
 import { Link } from "next-view-transitions";
 import { useState } from "react";
-import { Logo } from "../Logo";
 import { Button } from "../button";
+import { Logo } from "../logo";
 import { NavBarItem } from "./navbar-item";
 
 type Props = {

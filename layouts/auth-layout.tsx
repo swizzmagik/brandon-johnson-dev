@@ -1,9 +1,6 @@
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import { useId } from "react";
-import { motion } from "framer-motion";
-import { HorizontalGradient } from "@/components/horizontal-gradient";
 import { FeaturedTestimonials } from "@/components/featured-testimonials";
+import { HorizontalGradient } from "@/components/horizontal-gradient";
+import { cn } from "@/lib/utils";
 
 export function AuthLayout({ children }: { children: React.ReactNode }) {
   return (

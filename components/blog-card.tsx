@@ -1,10 +1,9 @@
+import { BlogWithSlug } from "@/lib/blog";
 import { Link } from "next-view-transitions";
-import React from "react";
-import { BlurImage } from "./blur-image";
-import { Logo } from "./Logo";
 import Image from "next/image";
 import Balancer from "react-wrap-balancer";
-import { BlogWithSlug } from "@/lib/blog";
+import { BlurImage } from "./blur-image";
+import { Logo } from "./logo";
 
 export const BlogCard = ({ blog }: { blog: BlogWithSlug }) => {
   const truncate = (text: string, length: number) => {
