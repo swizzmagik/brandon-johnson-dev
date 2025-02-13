@@ -71,8 +71,8 @@ export const Hero = () => {
       >
         <Balancer>
           Hi! I'm Brandon, a 5x Software Engineer powered by the latest LLMs and
-          agentic engineering workflows. I've unlocked the ability to build
-          faster than normal devs.
+          agentic engineering workflows. It's 2025 and the genie is out of the
+          bottle. Let's build the future together.
         </Balancer>
       </motion.p>
       <motion.div
