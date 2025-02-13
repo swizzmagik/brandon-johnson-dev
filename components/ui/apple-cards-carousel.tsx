@@ -10,6 +10,17 @@ export const Carousel = ({ items }: { items: React.ReactNode[] }) => {
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);
 
+  React.useEffect(() => {
+    if (carouselRef.current) {
+      // Wait for a frame to ensure layout is complete
+      requestAnimationFrame(() => {
+        carouselRef.current!.scrollLeft =
+          carouselRef.current!.scrollWidth - carouselRef.current!.clientWidth;
+        checkScrollability();
+      });
+    }
+  }, []);
+
   const checkScrollability = () => {
     if (carouselRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
@@ -54,7 +65,7 @@ export const Carousel = ({ items }: { items: React.ReactNode[] }) => {
                 },
               }}
               key={"card" + index}
-              className="last:pr-[5%] md:last:pr-[33%] rounded-3xl"
+              className="rounded-3xl"
             >
               {item}
             </motion.div>

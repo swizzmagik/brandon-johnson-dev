@@ -12,7 +12,7 @@ import {
 import { Heading } from "./heading";
 import { Subheading } from "./subheading";
 
-export const GridFeatures = () => {
+export const SkillsSection = () => {
   const features = [
     {
       title: "Front-End Engineering",

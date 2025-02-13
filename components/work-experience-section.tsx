@@ -1,104 +1,93 @@
-import { IconArrowRight } from "@tabler/icons-react";
+"use client";
+
+import { Card, Carousel } from "@/components/ui/apple-cards-carousel";
 import { Heading } from "./heading";
 import { Subheading } from "./subheading";
+import { WorkExperienceContent } from "./work-experience-content";
 
-export const WorkExperience = () => {
+export const WorkExperienceSection = () => {
   const experiences = [
     {
       period: "2007-2013",
-      role: "SOFTWARE ENG LEAD",
+      role: "Software Engineering Lead",
       company: "Sierra Lobo",
       description:
         "Lead team of developers and network engineers through years of complex aerospace engineering projects",
       link: "https://sierralobo.com/",
+      category: "Leadership",
+      title: "Aerospace Software Engineering",
+      src: "https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=2070&auto=format&fit=crop",
     },
     {
       period: "2014-2017",
-      role: "FULL STACK DEV",
+      role: "Senior Full Stack Developer",
       company: "SwizzMagik",
       description:
         "Founded a software engineering organization with a focus on website development and integration solutions",
       link: "https://swizzmagik.com/",
+      category: "Entrepreneurship",
+      title: "Full Stack Development",
+      src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
     },
     {
       period: "2016-2021",
-      role: "SOLUTIONS ARCHITECT",
+      role: "Solutions Architect",
       company: "Excelsior Creative",
       description:
         "Co-founded a creative web development agency to build custom web solutions for small to mid-size businesses",
       link: "https://excelsiorcreative.com/",
+      category: "Architecture",
+      title: "Web Solutions",
+      src: "/images/excelsior.jpg",
     },
     {
       period: "2018-2021",
-      role: "SOFTWARE ENG LEAD",
+      role: "Software Engineering Lead",
       company: "OCERS",
       description:
         "Managed team of developers with a focus on my business intelligence, analytics, and reporting solutions",
       link: "https://ocers.org/",
+      category: "Analytics",
+      title: "Business Intelligence",
+      src: "/images/ocers.jpg",
     },
     {
       period: "2022-2025",
-      role: "SR SOFTWARE ENG",
+      role: "Senior Software Engineer",
       company: "Synctera",
       description:
         "Built and maintained fintech infrastructure enabling companies to quickly launch banking products and services",
       link: "https://synctera.com/",
+      category: "Fintech",
+      title: "Banking Infrastructure",
+      src: "/images/synctera.jpg",
     },
   ];
 
+  const cards = experiences.map((exp, index) => (
+    <Card
+      key={exp.company}
+      card={{
+        category: exp.period,
+        title: exp.role,
+        src: exp.src,
+        content: <WorkExperienceContent experience={exp} />,
+        link: exp.link,
+      }}
+      index={index}
+    />
+  ));
+
   return (
     <div className="relative z-10 py-20">
-      <div>
+      <div className="mb-10">
         <Heading as="h2">Work Experience</Heading>
         <Subheading className="text-center">
           Over 15 years of experience in software development and technical
           leadership
         </Subheading>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
-        {experiences.map((experience, index) => (
-          <ExperienceCard
-            key={experience.company}
-            {...experience}
-            index={index}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const ExperienceCard = ({
-  period,
-  role,
-  company,
-  description,
-  index,
-  link,
-}: {
-  period: string;
-  role: string;
-  company: string;
-  description: string;
-  index: number;
-  link: string;
-}) => {
-  return (
-    <div className="group p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300">
-      <div className="text-sm text-neutral-400 mb-2">{period}</div>
-      <h3 className="text-lg font-bold mb-1">{role}</h3>
-      <div className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-        {company}
-      </div>
-      <p className="text-sm text-neutral-300 mb-4">{description}</p>
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center text-sm text-foreground hover:text-foreground/80 transition-colors"
-      >
-        Learn More <IconArrowRight className="ml-1 w-4 h-4" />
-      </a>
+      <Carousel items={cards} />
     </div>
   );
 };

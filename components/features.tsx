@@ -8,7 +8,7 @@ import { SkeletonTwo } from "./skeletons/second";
 import { SkeletonThree } from "./skeletons/third";
 import { Subheading } from "./subheading";
 
-export const Features = () => {
+export const AiAgentsSection = () => {
   const features = [
     {
       title: "Leading Eliza Framework Contributor",

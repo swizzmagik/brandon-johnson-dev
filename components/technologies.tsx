@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Heading } from "./heading";
@@ -9,52 +10,65 @@ import { Subheading } from "./subheading";
 type Logo = {
   title: string;
   src: string;
+  darkSrc: string;
 };
 
-export const Companies = () => {
+export const Technologies = () => {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   let [logos, setLogos] = useState<Logo[][]>([
     [
       {
         title: "eliza",
-        src: "/logos/eliza.png",
+        src: "/logos/eliza-b.png",
+        darkSrc: "/logos/eliza.png",
       },
       {
         title: "nextjs",
-        src: "/logos/nextjs.png",
+        src: "/logos/nextjs-b.png",
+        darkSrc: "/logos/nextjs.png",
       },
       {
         title: "aws",
-        src: "/logos/aws.png",
+        src: "/logos/aws-b.png",
+        darkSrc: "/logos/aws.png",
       },
       {
         title: "openai",
-        src: "/logos/openai.png",
+        src: "/logos/openai-b.png",
+        darkSrc: "/logos/openai.png",
       },
       {
         title: "solana",
-        src: "/logos/solana.png",
+        src: "/logos/solana-b.png",
+        darkSrc: "/logos/solana.png",
       },
     ],
     [
       {
         title: "eliza second",
-        src: "/logos/eliza.png",
+        src: "/logos/eliza-b.png",
+        darkSrc: "/logos/eliza.png",
       },
       {
         title: "nextjs second",
-        src: "/logos/nextjs.png",
+        src: "/logos/nextjs-b.png",
+        darkSrc: "/logos/nextjs.png",
       },
       {
         title: "aws second",
-        src: "/logos/aws.png",
+        src: "/logos/aws-b.png",
+        darkSrc: "/logos/aws.png",
       },
       {
         title: "openai second",
-        src: "/logos/openai.png",
+        src: "/logos/openai-b.png",
+        darkSrc: "/logos/openai.png",
       },
       {
         title: "solana second",
-        src: "/logos/solana.png",
+        src: "/logos/solana-b.png",
+        darkSrc: "/logos/solana.png",
       },
     ],
   ]);
@@ -69,6 +83,10 @@ export const Companies = () => {
       return newLogos;
     });
   };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!isAnimating) {
@@ -120,7 +138,13 @@ export const Companies = () => {
               className="relative"
             >
               <Image
-                src={logo.src}
+                src={
+                  mounted
+                    ? theme === "light"
+                      ? logo.src
+                      : logo.darkSrc
+                    : logo.darkSrc
+                }
                 alt={logo.title}
                 width="100"
                 height="100"

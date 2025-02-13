@@ -1,14 +1,13 @@
 import { Background } from "@/components/background";
-import { Companies } from "@/components/companies";
 import { Container } from "@/components/container";
 import { CTA } from "@/components/cta";
-import { Features } from "@/components/features";
-import { GridFeatures } from "@/components/grid-features";
+import { AiAgentsSection } from "@/components/features";
 import { Hero } from "@/components/hero";
 import { ProjectsGrid } from "@/components/projects-grid";
+import { SkillsSection } from "@/components/skils-section";
+import { Technologies } from "@/components/technologies";
 import { Testimonials } from "@/components/testimonials";
-import { WorkExperienceCarousel } from "@/components/work-experience-carousel";
-// test2 3
+import { WorkExperienceSection } from "@/components/work-experience-section";
 
 export default function Home() {
   return (
@@ -18,15 +17,15 @@ export default function Home() {
       </div>
       <Container className="flex min-h-screen flex-col items-center justify-between ">
         <Hero />
-        <Companies />
+        <Technologies />
         <div id="skills">
-          <GridFeatures />
+          <SkillsSection />
         </div>
         <div id="experience">
-          <WorkExperienceCarousel />
+          <WorkExperienceSection />
         </div>
         <div id="ai-agents">
-          <Features />
+          <AiAgentsSection />
         </div>
         <div id="projects">
           <ProjectsGrid />

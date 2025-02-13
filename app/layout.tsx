@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
             GeistSans.className,
@@ -39,7 +39,7 @@ export default function RootLayout({
             attribute="class"
             enableSystem
             disableTransitionOnChange
-            defaultTheme="light"
+            defaultTheme="dark"
           >
             {children}
           </ThemeProvider>

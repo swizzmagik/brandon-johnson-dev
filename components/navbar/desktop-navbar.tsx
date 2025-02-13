@@ -10,6 +10,7 @@ import { Link } from "next-view-transitions";
 import { useState } from "react";
 import { Button } from "../button";
 import { Logo } from "../logo";
+import { ModeToggle } from "../mode-toggle";
 import { NavBarItem } from "./navbar-item";
 
 type Props = {
@@ -64,7 +65,7 @@ export const DesktopNavbar = ({ navItems }: Props) => {
         </div>
       </div>
       <div className="flex space-x-2 items-center">
-        {/* <ModeToggle /> */}
+        <ModeToggle />
         <Button as={Link} href="/contact">
           Contact
         </Button>
