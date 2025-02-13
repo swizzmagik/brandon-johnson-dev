@@ -1,21 +1,11 @@
-/** @type {import('next').NextConfig} */
+import rehypePrism from "@mapbox/rehype-prism";
 import nextMDX from "@next/mdx";
 import remarkGfm from "remark-gfm";
-import rehypePrism from "@mapbox/rehype-prism";
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ["tsx", "mdx"],
-  reactStrictMode: true,
-  images: {
-    domains: [
-      "api.microlink.io", // Microlink Image Preview
-      "avatars.githubusercontent.com", // GitHub avatars
-    ],
-  },
-  experimental: {
-    newNextLinkBehavior: true,
-    scrollRestoration: true,
-  },
+  images: { domains: ["i.pravatar.cc", "images.unsplash.com"] },
+  pageExtensions: ["ts", "tsx", "mdx"],
 };
 
 const withMDX = nextMDX({

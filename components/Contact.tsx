@@ -1,183 +1,236 @@
-import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+"use client";
 
-export const Contact = () => {
-  const [open, setOpen] = useState(false);
-  const [success, setSuccess] = useState<string | null>("");
-  const [error, setError] = useState<string | null>("");
-  const [loading, setLoading] = useState<Boolean>(false);
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-  const [formState, setFormState] = useState({
-    email: {
-      value: "",
-      error: "",
-    },
-    message: {
-      value: "",
-      error: "",
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandX,
+} from "@tabler/icons-react";
+import Password from "./password";
+import { Button } from "./button";
+import { Logo } from "./Logo";
+
+const formSchema = z.object({
+  name: z
+    .string({
+      required_error: "Please enter your name",
+    })
+    .min(1, "Please enter email"),
+  email: z
+    .string({
+      required_error: "Please enter email",
+    })
+    .email("Please enter valid email")
+    .min(1, "Please enter email"),
+  company: z
+    .string({
+      required_error: "Please enter your company's name",
+    })
+    .min(1, "Please enter your company's name"),
+  message: z
+    .string({
+      required_error: "Please enter your message",
+    })
+    .min(1, "Please enter your message"),
+});
+
+export type LoginUser = z.infer<typeof formSchema>;
+
+export function ContactForm() {
+  const form = useForm<LoginUser>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      company: "",
+      message: "",
     },
   });
 
-  const dropIn = {
-    hidden: {
-      y: "4vh",
-      opacity: 0,
+  async function onSubmit(values: LoginUser) {
+    try {
+      console.log("submitted form", values);
+    } catch (e) {}
+  }
+
+  const socials = [
+    {
+      title: "twitter",
+      href: "https://twitter.com/mannupaaji",
+      icon: (
+        <IconBrandX className="h-5 w-5 text-muted dark:text-muted-dark hover:text-black" />
+      ),
     },
-    visible: {
-      y: "0",
-      opacity: 1,
-      transition: {
-        duration: 0.2,
-        type: "stiff",
-        damping: 25,
-      },
+    {
+      title: "github",
+      href: "https://github.com/manuarora700",
+      icon: (
+        <IconBrandGithub className="h-5 w-5 text-muted dark:text-muted-dark hover:text-black" />
+      ),
     },
-    exit: {
-      y: "4vh",
-      opacity: 0,
+    {
+      title: "linkedin",
+      href: "https://linkedin.com/manuarora28",
+      icon: (
+        <IconBrandLinkedin className="h-5 w-5 text-muted dark:text-muted-dark hover:text-black" />
+      ),
     },
-  };
+  ];
 
-  const onChangeHandler = (field: any, value: any) => {
-    let state = {
-      [field]: {
-        value,
-        error: null,
-      },
-    };
-    setFormState({ ...formState, ...state });
-  };
-
-  const handleSubmit = async () => {
-    let { email, message } = formState;
-    console.log("email", email, "message", message);
-    let updatedState = { ...formState };
-    let regex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!email.value) {
-      updatedState.email.error = `Oops! Email cannot be empty.`;
-      setFormState({ ...updatedState });
-      return;
-    }
-
-    if (!email.value.toLowerCase().match(regex)) {
-      updatedState.email.error = `Please enter a valid email address`;
-      setFormState({ ...updatedState });
-      return;
-    }
-    if (!message.value) {
-      updatedState.message.error = `Oops! Message cannot be empty.`;
-      setFormState({ ...updatedState });
-      return;
-    }
-    // Everything is fine - Proceed with the API call.
-
-    // Your API Call goes here
-  };
-
-  const handleButtonClick = () => {
-    setOpen(!open);
-    setFormState({
-      email: {
-        value: "",
-        error: "",
-      },
-      message: {
-        value: "",
-        error: "",
-      },
-    });
-    setLoading(false);
-    setError("");
-    setSuccess("");
-  };
   return (
-    <AnimatePresence initial={false} onExitComplete={() => null}>
-      <div className="fixed right-4 md:right-10 bottom-10 flex flex-col items-end z-[99999]">
-        {open && (
-          <motion.div
-            variants={dropIn}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="mb-4 rounded-xl shadow-2xl bg-zinc-800   flex flex-col overflow-hidden mx-4 md:mx-0"
-          >
-            <div className="p-4 bg-zinc-700 ">
-              <h2 className="text-zinc-200 font-bold text-sm md:text-xl ">
-                Have a question? Drop in your message 👇
-              </h2>
-              <small className="hidden md:block text-xs text-zinc-400 mb-10 ">
-                It won't take more than 10 seconds. Shoot your shot. 😉
-              </small>
-            </div>
-            <div className="content p-6 flex flex-col bg-zinc-800">
-              <label className="text-sm font-normal text-zinc-400 mb-2 ">
-                Email Address
-              </label>
-              <input
-                type="email"
-                value={formState.email.value}
-                onChange={(e) => onChangeHandler("email", e.target.value)}
-                className="text-zinc-400 rounded-md border bg-zinc-800 border-zinc-700 py-1 px-2 focus:outline-none focus:border-gray-400 placeholder:text-sm  mb-1"
-                placeholder="johndoe@xyz.com"
-              />
+    <Form {...form}>
+      <div className="flex relative z-20 items-center w-full justify-center px-4 py-4 lg:py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div className="mx-auto w-full max-w-md">
+          <div>
+            <h1 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-black dark:text-white">
+              Contact Us
+            </h1>
+            <p className="mt-4 text-muted dark:text-muted-dark  text-sm max-w-sm">
+              Please reach out to us and we will get back to you at the speed of
+              light.
+            </p>
+          </div>
 
-              <small className="h-4 min-h-4 text-red-500 font-semibold">
-                {formState.email.error && formState.email.error}
-              </small>
-
-              <label className="text-sm font-normal text-zinc-400 mb-2 ">
-                Message
-              </label>
-              <textarea
-                rows={3}
-                value={formState.message.value}
-                onChange={(e) => onChangeHandler("message", e.target.value)}
-                className="text-zinc-400 rounded-md border border-zinc-700 py-1 px-2 bg-zinc-800 focus:outline-none focus:border-gray-400 placeholder:text-sm   mb-1"
-                placeholder="I'd love a compliment from you."
-              />
-              <small className="h-4 min-h-4 text-red-500 font-semibold mb-4">
-                {formState.message.error && formState.message.error}
-              </small>
-              <button
-                onClick={handleSubmit}
-                className="text-zinc-100  w-full px-4 py-2 md:py-4 border-2 border-zinc-800 bg-zinc-700 rounded-md font-normal text-sm  mb-4 transition duration-200 hover:shadow-none"
+          <div className="py-10">
+            <div>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
               >
-                {loading ? "Submitting..." : "Submit"}
-              </button>
-              <small className="h-4 min-h-4 mb-4">
-                {success && (
-                  <p className="text-green-500 font-semibold text-sm">
-                    {success}
-                  </p>
-                )}
-                {error && (
-                  <p className="text-red-500 font-semibold text-sm">{error}</p>
-                )}
-              </small>
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
+                      >
+                        Full Name
+                      </label>
+                      <FormControl>
+                        <div className="mt-2">
+                          <input
+                            id="name"
+                            type="name"
+                            placeholder="Manu Arora"
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            {...field}
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
+                      >
+                        Email address
+                      </label>
+                      <FormControl>
+                        <div className="mt-2">
+                          <input
+                            id="email"
+                            type="email"
+                            placeholder="hello@johndoe.com"
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            {...field}
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="company"
+                  render={({ field }) => (
+                    <FormItem>
+                      <label
+                        htmlFor="company"
+                        className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
+                      >
+                        Company
+                      </label>
+                      <FormControl>
+                        <div className="mt-2">
+                          <input
+                            id="company"
+                            type="company"
+                            placeholder="Aceternity Labs, LLC"
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            {...field}
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
+                      >
+                        message
+                      </label>
+                      <FormControl>
+                        <div className="mt-2">
+                          <textarea
+                            rows={5}
+                            id="message"
+                            placeholder="Enter your message here"
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            {...field}
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <div>
+                  <Button className="w-full">Submit</Button>
+                </div>
+              </form>
             </div>
-          </motion.div>
-        )}
-        <button
-          onClick={handleButtonClick}
-          className="bg-zinc-700  w-14 h-14 rounded-full  flex items-center justify-center hover:scale-105 hover:shadow-xl transition duration-200 shadow-lg"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            className="w-6 h-6 text-zinc-100"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
-            />
-          </svg>
-        </button>
+          </div>
+          <div className="flex items-center justify-center space-x-4 py-4">
+            {socials.map((social) => (
+              <Link href={social.href} key={social.title}>
+                {social.icon}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
-    </AnimatePresence>
+    </Form>
   );
-};
+}
