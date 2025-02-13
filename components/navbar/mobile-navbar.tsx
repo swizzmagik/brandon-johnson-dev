@@ -1,11 +1,12 @@
 "use client";
+
+import { Logo } from "@/components/logo";
 import { cn } from "@/lib/utils";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { Link } from "next-view-transitions";
 import { useState } from "react";
 import { IoIosClose, IoIosMenu } from "react-icons/io";
 import { Button } from "../button";
-import { Logo } from "../logo";
 import { ModeToggle } from "../mode-toggle";
 
 export const MobileNavbar = ({ navItems }: any) => {
