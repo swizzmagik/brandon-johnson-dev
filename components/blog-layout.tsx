@@ -5,7 +5,7 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
-import { Container } from "./container";
+import { Container } from "./Container-old";
 import { Logo } from "./logo";
 export function BlogLayout({
   blog,

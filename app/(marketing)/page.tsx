@@ -1,6 +1,6 @@
 import { Background } from "@/components/background";
 import { Companies } from "@/components/companies";
-import { Container } from "@/components/container";
+import { Container } from "@/components/Container-old";
 import { CTA } from "@/components/cta";
 import { Features } from "@/components/features";
 import { GridFeatures } from "@/components/grid-features";
