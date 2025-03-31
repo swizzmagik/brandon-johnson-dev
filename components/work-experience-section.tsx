@@ -79,15 +79,17 @@ export const WorkExperienceSection = () => {
   ));
 
   return (
-    <div className="relative z-10 py-20">
-      <div className="mb-10">
+    <div className="relative z-10 py-10 sm:py-20">
+      <div className="mb-6 sm:mb-10 px-6 sm:px-8">
         <Heading as="h2">Work Experience</Heading>
         <Subheading className="text-center">
           Over 15 years of experience in software development and technical
           leadership
         </Subheading>
       </div>
-      <Carousel items={cards} />
+      <div className="w-screen max-w-full overflow-hidden">
+        <Carousel items={cards} />
+      </div>
     </div>
   );
 };

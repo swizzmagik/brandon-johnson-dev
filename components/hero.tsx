@@ -1,5 +1,6 @@
 "use client";
 
+import ColourfulText from "@/components/ui/colourful-text";
 import { motion } from "framer-motion";
 import { HiArrowRight } from "react-icons/hi2";
 import Balancer from "react-wrap-balancer";
@@ -51,7 +52,9 @@ export const Hero = () => {
         }}
         className="text-2xl md:text-4xl lg:text-6xl font-semibold max-w-4xl mx-auto text-center mt-6 relative z-10"
       >
-        <Balancer>Software Engineering, Supercharged</Balancer>
+        <Balancer>
+          Software Engineering, <ColourfulText text="Supercharged" />
+        </Balancer>
       </motion.h1>
       <motion.p
         initial={{
@@ -71,8 +74,8 @@ export const Hero = () => {
       >
         <Balancer>
           Hi! I'm Brandon, a 5x Software Engineer powered by the latest LLMs and
-          agentic engineering workflows. It's 2025 and the genie is out of the
-          bottle. Let's build the future together.
+          agentic workflows. I also manage an army of 600+ AI agents that
+          collaborate, learn, and act on data 24x7x365.
         </Balancer>
       </motion.p>
       <motion.div
