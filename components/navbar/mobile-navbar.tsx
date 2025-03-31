@@ -27,24 +27,27 @@ export const MobileNavbar = ({ navItems }: any) => {
   return (
     <div
       className={cn(
-        "flex justify-between bg-white dark:bg-neutral-900 items-center w-full rounded-full px-2.5 py-1.5 transition duration-200",
+        "flex justify-between bg-white dark:bg-neutral-900 items-center w-full rounded-full px-4 py-2 transition duration-200",
         showBackground &&
           "bg-neutral-50 dark:bg-neutral-900 shadow-[0px_-2px_0px_0px_var(--neutral-100),0px_2px_0px_0px_var(--neutral-100)] dark:shadow-[0px_-2px_0px_0px_var(--neutral-800),0px_2px_0px_0px_var(--neutral-800)]"
       )}
     >
       <Logo />
-      <IoIosMenu
-        className="text-black dark:text-white h-6 w-6"
-        onClick={() => setOpen(!open)}
-      />
+      <div className="flex items-center space-x-2">
+        <ModeToggle />
+        <IoIosMenu
+          className="text-black dark:text-white h-6 w-6 cursor-pointer"
+          onClick={() => setOpen(!open)}
+        />
+      </div>
       {open && (
-        <div className="fixed inset-0 bg-white dark:bg-black z-50 flex flex-col items-start justify-start space-y-10  pt-5  text-xl text-zinc-600  transition duration-200 hover:text-zinc-800">
+        <div className="fixed inset-0 bg-white dark:bg-black z-50 flex flex-col items-start justify-start space-y-10 pt-5 text-xl text-zinc-600 transition duration-200 hover:text-zinc-800">
           <div className="flex items-center justify-between w-full px-5">
             <Logo />
             <div className="flex items-center space-x-2">
               <ModeToggle />
               <IoIosClose
-                className="h-8 w-8 text-black dark:text-white"
+                className="h-8 w-8 text-black dark:text-white cursor-pointer"
                 onClick={() => setOpen(!open)}
               />
             </div>
@@ -61,7 +64,7 @@ export const MobileNavbar = ({ navItems }: any) => {
                         onClick={() => setOpen(false)}
                         className="relative max-w-[15rem] text-left text-2xl"
                       >
-                        <span className="block text-black">
+                        <span className="block text-black dark:text-white">
                           {childNavItem.title}
                         </span>
                       </Link>
@@ -82,12 +85,9 @@ export const MobileNavbar = ({ navItems }: any) => {
               </>
             ))}
           </div>
-          <div className="flex flex-row w-full items-start gap-2.5  px-8 py-4 ">
-            <Button as={Link} href="/signup">
-              Sign Up
-            </Button>
-            <Button variant="simple" as={Link} href="/login">
-              Login
+          <div className="flex flex-row w-full items-start gap-2.5 px-8 py-4">
+            <Button as={Link} href="/contact">
+              Contact me
             </Button>
           </div>
         </div>

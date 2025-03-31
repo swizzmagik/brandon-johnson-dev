@@ -44,13 +44,13 @@ export const Carousel = ({ items }: { items: React.ReactNode[] }) => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden px-4 sm:px-6">
+    <div className="relative w-[calc(100vw-2rem)] sm:w-[calc(100vw-3rem)] md:w-[calc(100vw-4rem)] mx-auto overflow-hidden">
       <div
         className="flex w-full overflow-x-scroll py-4 sm:py-10 md:py-20 scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         ref={carouselRef}
         onScroll={checkScrollability}
       >
-        <div className="flex flex-row justify-start gap-6 pl-3 sm:pl-4 max-w-7xl mx-auto min-w-full">
+        <div className="flex flex-row justify-start gap-4">
           {items.map((item, index) => (
             <motion.div
               initial={{
@@ -67,14 +67,14 @@ export const Carousel = ({ items }: { items: React.ReactNode[] }) => {
                 },
               }}
               key={"card" + index}
-              className="rounded-3xl w-[calc(100vw-48px)] sm:w-auto flex-shrink-0 snap-center"
+              className="rounded-3xl w-[calc(100vw-3rem)] sm:w-[calc(100vw-5rem)] md:w-[26rem] lg:w-[30rem] flex-shrink-0 snap-center first:ml-0"
             >
               {item}
             </motion.div>
           ))}
         </div>
       </div>
-      <div className="flex justify-end gap-2 mr-4 sm:mr-10 mt-4">
+      <div className="flex justify-end gap-2 mt-4 pr-1">
         <button
           className="relative z-40 h-10 w-10 rounded-full bg-white dark:bg-white flex items-center justify-center disabled:opacity-50 transition-opacity"
           onClick={scrollLeft}
@@ -112,7 +112,7 @@ export const Card = ({
       href={card.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-[28rem] sm:h-80 w-full sm:w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-between relative group hover:scale-105 transition-transform duration-300"
+      className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-auto min-h-[28rem] sm:min-h-[30rem] md:min-h-[35rem] lg:min-h-[40rem] w-full overflow-hidden flex flex-col items-start justify-between relative group hover:scale-105 transition-transform duration-300"
     >
       <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50 z-30 pointer-events-none" />
       <div className="relative z-40 p-5 sm:p-8 flex flex-col h-full w-full">
@@ -123,18 +123,16 @@ export const Card = ({
           <p className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2">
             {card.title}
           </p>
-          <p className="text-white/90 text-lg font-semibold mt-2 text-left w-full">
+          <p className="text-white/90 text-lg font-semibold mt-2 text-left w-full line-clamp-1">
             {(card.content as any).props.experience.company}
           </p>
-          <p className="text-white/80 text-sm mt-2 line-clamp-4 text-left w-full pr-2">
+          <p className="text-white/80 text-sm mt-2 line-clamp-3 text-left w-full pr-2">
             {(card.content as any).props.experience.description}
           </p>
         </div>
 
         <div className="mt-auto w-full pb-1">
-          <div className="text-sm text-white hover:text-blue-400 transition-colors text-left">
-            Learn More →
-          </div>
+          <div className="text-sm text-white hover:text-blue-400 transition-colors text-left"></div>
         </div>
       </div>
       {card.src && (

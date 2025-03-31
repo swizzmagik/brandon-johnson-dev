@@ -87,7 +87,7 @@ export const WorkExperienceSection = () => {
           leadership
         </Subheading>
       </div>
-      <div className="w-screen max-w-full overflow-hidden">
+      <div className="w-full overflow-hidden">
         <Carousel items={cards} />
       </div>
     </div>
