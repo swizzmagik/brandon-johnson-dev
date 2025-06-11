@@ -98,9 +98,13 @@ export const Hero = () => {
               <div className="absolute inset-0 bg-black/10 hover:bg-black/20 rounded-full transition-colors duration-200"></div>
               <div className="absolute -inset-[5px] rounded-full opacity-0 border-[5px] border-white/50 group-hover:opacity-100 transition-opacity duration-200"></div>
             </button>
-            <div className="absolute -bottom-[10px] -right-[10px] z-10 flex items-center justify-center w-14 h-14 bg-neutral-800 dark:bg-black/80 rounded-full border-[2px] border-neutral-700 dark:border-white/80 shadow-lg pointer-events-none">
+            <button
+              onClick={handlePlayVideo}
+              className="absolute -bottom-[10px] -right-[10px] z-10 flex items-center justify-center w-14 h-14 bg-neutral-800 dark:bg-black/50 rounded-full border-[2px] border-neutral-700/50 dark:border-white/20 shadow-lg hover:bg-neutral-700 dark:hover:bg-black/70 transition-colors duration-200 cursor-pointer"
+              aria-label="Play introduction video"
+            >
               <FaPlay className="ml-0.5 text-white" size={18} />
-            </div>
+            </button>
           </div>
         )}
         {isPlaying && (
