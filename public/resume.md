@@ -1,10 +1,10 @@
-# Brandon Johnson
+# J. Brandon Johnson
 
-**Full Stack Developer | Solutions Architect | AI Practitioner**
+**AI Agent Orchestrator | AI Coding Evangelist | Full Stack Developer | Solutions Architect | Web3 Enthusiast**
 
 ## Contact
-- Email: b@exct.io
-- Website: https://b.exct.io
+- Email: bjohnson@swizzmagik.com
+- Website: https://brandonjohnson.dev
 - Phone: (949) 891-1494
 - Address: 29 Alienta Ln, RMV, CA 92694
 
@@ -22,6 +22,23 @@ Innovative and results-driven Full Stack Developer, Solutions Architect, and AI 
 - **2016** – Led development of a data analytics platform delivering real-time, AI-enhanced actionable intelligence to executives managing multi-billion-dollar funds.
 - **2014** – Built a web-based data automation platform employed by NASA and DoD to track and reconcile millions in annualized funding, incorporating early AI for data reconciliation.
 
+## Technical Skills
+
+**Web**
+- Next.js, React, TypeScript, JavaScript, Node.js, PHP, .NET, Rust, Go, Angular, Vue, Svelte
+
+**Database**
+- PostgreSQL, DynamoDB, MySQL, MS SQL Server, Firebase, MongoDB
+
+**Cloud**
+- AWS (CDK), Azure, Google Cloud
+
+**DevOps**
+- CI/CD, GitHub Actions, Cloudformation, GitLab
+
+**Other Tools**
+- Figma, ShadCN, Tailwind, Adobe Suite, Cypress, Jest, Puppeteer, Playwright
+
 ## Professional Experience
 
 ### Synctera, Inc. – San Francisco, CA
@@ -29,21 +46,21 @@ Innovative and results-driven Full Stack Developer, Solutions Architect, and AI 
 - Established coding standards and best practices for frontend React teams, backend integrations, and AI-enhanced interfaces, fostering efficient development.
 - Pioneered a reusable UI/UX component library tailored to branding and architecture needs, integrating AI components for dynamic user interactions, resulting in a 40% reduction in development time for junior developers.
 
-### Excelsior Creative, LLC
-**Solutions Architect & Full Stack Developer** – 2020 to 2023
+### Excelsior Creative, LLC - Orange County, CA
+**Solutions Architect & Full Stack Software Engineer** – 2020 to 2023
 - Led creation of auto-compounding yield vaults exceeding $30M in total value locked, supporting diverse DeFi strategies on the Cosmos ecosystem with AI-optimized token management.
 - Developed a multi-signature wallet solution and web frontend used by thousands, enabling on-chain treasury management and voting with embedded AI for fraud detection.
 - Engineered an automated payments streaming solution for decentralized, autonomous treasury payments to employees and contractors, leveraging AI agents for compliance and efficiency.
 - Provisioned, managed, and monitored cloud infrastructure with AI-driven alerting and notification services for proactive issue resolution.
 
 ### Orange County Employees Retirement System – Santa Ana, CA
-**IT Programming Manager / Lead Developer** – 2013 to 2021
+**Senior Full Stack Software Engineer** – 2013 to 2021
 - Single-handedly architected and developed an organization-wide Intranet portal, incorporating AI tools for personalized content delivery, used daily by staff across all departments.
 - Directed business analysis, design, and development of over 30 custom applications, automating internal processes with AI integrations to boost efficiency and reduce manual errors.
 - Enforced coding standards, best practices, and approval policies for development teams, ensuring high-quality, scalable enterprise projects with AI process optimization.
 
 ### Sierra Lobo, Inc. – Milan, OH
-**Information Technology Director** - 2006 to 2013
+**Director of Information Technology** - 2006 to 2013
 - Defined organization-wide IT strategy, policies, and development plans, integrating AI for predictive analytics in infrastructure management.
 - Built private cloud architecture supporting federal clients and a network for over 1,200 users, with AI-enhanced monitoring for security and performance.
 - Led technology upgrades, including full infrastructure virtualization and compliance reporting solutions for AS9100 and ISO standards, using AI for audit automation.
@@ -62,16 +79,6 @@ Innovative and results-driven Full Stack Developer, Solutions Architect, and AI 
 - Engineering Honors Program Participant
 - Academic Scholarship Recipient
 - Dean's List
-
-## Technical Skills
-
-| Category | Skills |
-|----------|--------|
-| **Web** | Next.js, React, TypeScript, JavaScript, Node.js, PHP, .NET, Rust, Go, Angular, Vue, Svelte |
-| **Database** | PostgreSQL, DynamoDB, MySQL, MS SQL Server, Firebase, MongoDB |
-| **Cloud** | AWS (CDK), Azure, Google Cloud |
-| **DevOps** | CI/CD, GitHub Actions, GitLab |
-| **Other Tools** | Figma, ShadCN, Tailwind, Adobe Suite, Cypress, Jest, Puppeteer, Playwright |
 
 ## Key Skills
 - AI Process Optimization
