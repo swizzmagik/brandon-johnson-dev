@@ -2,11 +2,12 @@
 
 import ColourfulText from "@/components/ui/colourful-text";
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi2";
 import Balancer from "react-wrap-balancer";
 import { Button } from "./button";
+import { DocumentModal } from "./resume-modal";
 
 import { Link } from "next-view-transitions";
 import Image from "next/image";
@@ -16,6 +17,10 @@ export const Hero = () => {
   const router = useRouter();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isCoverLetterOpen, setIsCoverLetterOpen] = useState(false);
+  const [resumeContent, setResumeContent] = useState("");
+  const [coverLetterContent, setCoverLetterContent] = useState("");
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handlePlayVideo = () => {
@@ -62,6 +67,38 @@ export const Hero = () => {
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
     }
+  };
+
+  // Load document contents
+  useEffect(() => {
+    const loadContent = async () => {
+      try {
+        // Load resume
+        const resumeResponse = await fetch("/resume.md");
+        if (resumeResponse.ok) {
+          const resumeContent = await resumeResponse.text();
+          setResumeContent(resumeContent);
+        }
+
+        // Load cover letter
+        const coverLetterResponse = await fetch("/cover-letter.md");
+        if (coverLetterResponse.ok) {
+          const coverLetterContent = await coverLetterResponse.text();
+          setCoverLetterContent(coverLetterContent);
+        }
+      } catch (error) {
+        console.error("Failed to load document content:", error);
+      }
+    };
+    loadContent();
+  }, []);
+
+  const handleResumeClick = () => {
+    setIsResumeOpen(true);
+  };
+
+  const handleCoverLetterClick = () => {
+    setIsCoverLetterOpen(true);
   };
 
   return (
@@ -215,13 +252,12 @@ export const Hero = () => {
         }}
         className="flex items-center gap-4 justify-center mt-6 relative z-10"
       >
-        <Button
-          as={Link}
-          href="/john-brandon-johnson-resume.pdf"
-          target="_blank"
-        >
-          Download Resume
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <Button onClick={handleResumeClick}>View Resume</Button>
+          <Button onClick={handleCoverLetterClick} variant="outline">
+            View Cover Letter
+          </Button>
+        </div>
         <Button
           variant="simple"
           as={Link}
@@ -261,6 +297,22 @@ export const Hero = () => {
           </div>
         </div>
       </motion.div>
+
+      <DocumentModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+        content={resumeContent}
+        title="Resume"
+        downloadUrl="/john-brandon-johnson-resume.pdf"
+        downloadLabel="Download PDF"
+      />
+
+      <DocumentModal
+        isOpen={isCoverLetterOpen}
+        onClose={() => setIsCoverLetterOpen(false)}
+        content={coverLetterContent}
+        title="Cover Letter"
+      />
     </div>
   );
 };
